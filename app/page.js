@@ -1,4 +1,4 @@
-"use client";
+import { TopBanner } from "@/components/topBanner";
 import {
   faFacebook,
   faTiktok,
@@ -20,171 +20,17 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  // State to keep track of the current slide index
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Content for each slide
-  const slides = [
-    {
-      heading: "Welcome to",
-      subheading: "RALOC LOGISTICS",
-      content:
-        "Discover seamless logistics solutions. We specialize in global transportation via sea, land, and air, ensuring safety and efficiency for your goods.",
-      image: "/bg1.jpg",
-      button1: "Explore Services", // Links to the services page
-      button2: "Contact Us", // Links to the contact page or opens a form
-    },
-    {
-      heading: "Transport Your Goods",
-      subheading: "Across the Globe",
-      content:
-        "Experience hassle-free shipping and delivery worldwide. With our trusted network, we ensure your goods reach their destination smoothly.",
-      image: "/bg2.jpg",
-      button1: "Get a Quote", // Opens a form or redirects to a quote page
-      button2: "Learn More", // Links to detailed information about global transport
-    },
-    {
-      heading: "With Help From Our Fleet",
-      subheading: "Deliver Anywhere",
-      content:
-        "Our state-of-the-art fleet ensures timely and reliable delivery to any destination. Partner with us for a superior logistics experience.",
-      image: "/bg3.jpg",
-      button1: "Partner With Us", // Opens a partnership inquiry form
-      button2: "Track Shipment", // Links to a tracking page (optional for future)
-    },
-  ];
-
-  // Effect to change the slide every 10 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); // 10 seconds in milliseconds
-
-    // Cleanup function to clear the interval when the component unmounts
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
   return (
     <>
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className="h-svh text-white relative flex flex-col transition duration-500"
-          style={{
-            display: index === currentSlide ? "block" : "none",
-            opacity: index === currentSlide ? 1 : 0,
-          }}
-        >
-          <div className="absolute top-0 left-0 w-full h-full z-0">
-            <Image
-              src={slide.image}
-              width={2000}
-              height={2000}
-              className="w-full h-full object-cover"
-              alt="background image"
-            />
-          </div>
-
-          <div className="absolute top-0 left-0 w-full h-full z-10 bg-black/10"></div>
-
-          {/* Big Div */}
-          <header className="px-12 relative z-50">
-            {/* header */}
-            <div className="border-b p-4 flex justify-between items-center">
-              <div className="flex gap-1.5 items-center">
-                <FontAwesomeIcon icon={faMapPin} width={20} height={20} />
-                <p>Accra, Ghana</p>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <FontAwesomeIcon icon={faFacebook} width={20} height={20} />
-                <FontAwesomeIcon icon={faTwitter} width={20} height={20} />
-                <FontAwesomeIcon icon={faTiktok} width={20} height={20} />
-                <FontAwesomeIcon icon={faWhatsapp} width={20} height={20} />
-              </div>
-            </div>
-            <div className="flex justify-between items-center p-3">
-              <div>
-                <Image
-                  src={"/logo.png"}
-                  width={1000}
-                  height={1000}
-                  className="w-24 h-auto"
-                  alt="logo"
-                />
-              </div>
-              <nav className="text-sm flex gap-4 font-semibold">
-                <Link href={"/"}>HOME</Link>
-                <Link href={"/"}>SERVICES</Link>
-                <Link href={"/"}>ABOUT US</Link>
-                <Link href={"/"}>CONTACT US</Link>
-              </nav>
-            </div>
-          </header>
-
-          <div className="flex-1 mt-10 grid grid-cols-2 relative z-50 px-12">
-            <div className="p-3 col-span-1 flex items-center">
-              <div>
-                <h1 className="text-xl font-semibold">{slide.heading}</h1>
-                <h2 className="text-5xl font-bold mt-3">{slide.subheading}</h2>
-                <hr className="w-40 h-2 bg-[#fe9000] mt-5 rounded-md border-0" />
-
-                <p className="mt-8 text-lg font-semibold">{slide.content}</p>
-
-                <div className="flex gap-4 mt-8">
-                  <button
-                    type="button"
-                    className="p-2 rounded-md bg-[#fe9000] text-white"
-                  >
-                    {slide.button1}
-                  </button>
-                  <button
-                    type="button"
-                    className="p-2 rounded-md bg-[#fe9000] text-white"
-                  >
-                    {slide.button2}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-span-1 flex items-center justify-center p-3">
-              <div className="p-8 bg-black/30 rounded-lg w-full">
-                <h2 className="text-lg font-semibold">Track Shipment</h2>
-                <p className="text-[#fe9000] mt-3">
-                  ***Track, find and ship your products using Alphacode
-                </p>
-                <div className="mt-12">
-                  <label className="text-center w-full block">
-                    Alphacode / Tracking No.
-                  </label>
-                  <input
-                    className="w-full block p-2 mt-5 rounded-lg bg-white"
-                    type="text"
-                    placeholder="Enter Alphacode / tracking No."
-                  />
-                  <button
-                    type="button"
-                    className="bg-[#fe9000] hover:bg-black transition duration-1000 p-2 flex items-center justify-center gap-2 mx-auto mt-5 rounded-lg px-6 hover:px-8"
-                  >
-                    <FontAwesomeIcon icon={faSearch} width={20} height={20} />
-                    <span>Search</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+      <TopBanner />
 
       <div className="relative bg-[url('/dots.png')] bg-cover bg-center bg-fixed">
-        <div className="px-12 py-5 bg-[#004efe] opacity-75 grid grid-cols-3">
-          <div className="flex gap-4 p-3 text-white">
-            <div>
-              <FontAwesomeIcon icon={faHeadset} width={30} height={30} />
+        <div className="sm:px-12 py-5 bg-[#004efe] opacity-75 grid md:grid-cols-3">
+          <div className="flex gap-4 sm:p-3 p-6 text-white">
+            <div className="flex-shrink-0">
+              <FontAwesomeIcon className="text-2xl" icon={faHeadset} width={30} height={30} />
             </div>
             <div>
               <h1 className="font-bold">CALL CENTER</h1>
@@ -192,9 +38,9 @@ export default function Home() {
               <p className="text-sm mt-1">+233 59 456 8876</p>
             </div>
           </div>
-          <div className="flex gap-4 p-3 text-white">
-            <div>
-              <FontAwesomeIcon icon={faBusinessTime} width={30} height={30} />
+          <div className="flex gap-4 sm:p-3 p-6 text-white">
+            <div className="flex-shrink-0">
+              <FontAwesomeIcon className="text-2xl" icon={faBusinessTime} width={30} height={30} />
             </div>
             <div>
               <h1 className="font-bold">WORKING HOURS</h1>
@@ -202,9 +48,9 @@ export default function Home() {
               <p className="text-sm mt-1">Sat 9AM - 3PM</p>
             </div>
           </div>
-          <div className="flex gap-4 p-3 text-white">
-            <div>
-              <FontAwesomeIcon icon={faMapLocationDot} width={30} height={30} />
+          <div className="flex gap-4 sm:p-3 p-6 text-white">
+            <div className="flex-shrink-0">
+              <FontAwesomeIcon className="text-2xl" icon={faMapLocationDot} width={30} height={30} />
             </div>
             <div>
               <h1 className="font-bold">OUR LOCATION</h1>
@@ -214,8 +60,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="px-12 py-8">
-          <div className="p-3 grid gap-6 grid-cols-3">
+        <div className="sm:px-12 py-8">
+          <div className="p-3 grid md:gap-6 gap-16 md:grid-cols-3">
             <div className="col-span-1 relative">
               <h1 className="text-center text-sm font-bold">OUR SERVICES</h1>
               <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -223,7 +69,7 @@ export default function Home() {
                 WHAT WE CAN DO FOR YOU
               </p>
 
-              <div className="absolute -bottom-24 p-2 w-full">
+              <div className="md:absolute -bottom-24 p-2 w-full md:mt-0 mt-8">
                 <Image
                   src={"/truck_green.png"}
                   width={1000}
@@ -233,22 +79,24 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="col-span-2 grid gap-4 grid-cols-2">
+            <div className="md:col-span-2 grid gap-4 md:grid-cols-2">
               <div className="p-10 rounded-md bg-white shadow flex gap-4">
                 <div className="flex-shrink-0">
                   <FontAwesomeIcon
                     icon={faShip}
                     width={30}
                     height={30}
-                    className="text-[#fe9000]"
+                    className="text-[#fe9000] text-3xl"
                   />
                 </div>
-                <div>
+                <div className="flex-grow-0">
                   <h1 className="font-bold">OCEAN CARGO</h1>
                   <p className="mt-1">
-                    Praesent eu rhoncus nibh. Quisque tincidunt, nisi in
-                    venenatis commodo, neque quam pharetra dolor, nec lacinia
-                    urna quam.
+                    Transport your goods across the globe with our dependable
+                    ocean cargo services. Whether it’s full container loads or
+                    less-than-container loads, we ensure timely delivery, secure
+                    handling, and cost-effective shipping solutions. Partner
+                    with us for seamless logistics tailored to your needs.
                   </p>
                 </div>
               </div>
@@ -259,15 +107,17 @@ export default function Home() {
                     icon={faPlaneDeparture}
                     width={30}
                     height={30}
-                    className="text-[#fe9000]"
+                    className="text-[#fe9000] text-3xl"
                   />
                 </div>
-                <div>
+                <div className="flex-grow-0">
                   <h1 className="font-bold">FLY ANYWHERE</h1>
                   <p className="mt-1">
-                    Praesent eu rhoncus nibh. Quisque tincidunt, nisi in
-                    venenatis commodo, neque quam pharetra dolor, nec lacinia
-                    urna quam.
+                    Experience the speed and efficiency of our air freight
+                    solutions. We offer express delivery for time-sensitive
+                    shipments to destinations worldwide, ensuring your goods
+                    arrive on schedule. With our global network and reliable
+                    partners, your cargo is in safe hands.
                   </p>
                 </div>
               </div>
@@ -278,15 +128,17 @@ export default function Home() {
                     icon={faTruck}
                     width={30}
                     height={30}
-                    className="text-[#fe9000]"
+                    className="text-[#fe9000] text-3xl"
                   />
                 </div>
-                <div>
+                <div className="flex-grow-0">
                   <h1 className="font-bold">PROFESSIONAL COURIER SERVICES</h1>
                   <p className="mt-1">
-                    Praesent eu rhoncus nibh. Quisque tincidunt, nisi in
-                    venenatis commodo, neque quam pharetra dolor, nec lacinia
-                    urna quam.
+                    From documents to parcels, our professional courier services
+                    guarantee fast and secure delivery. We prioritize customer
+                    satisfaction, offering real-time tracking and door-to-door
+                    service. Trust us to handle your courier needs with
+                    precision and care.
                   </p>
                 </div>
               </div>
@@ -297,15 +149,17 @@ export default function Home() {
                     icon={faWarehouse}
                     width={30}
                     height={30}
-                    className="text-[#fe9000]"
+                    className="text-[#fe9000] text-3xl"
                   />
                 </div>
-                <div>
+                <div className="flex-grow-0">
                   <h1 className="font-bold">CARGO STORAGE</h1>
                   <p className="mt-1">
-                    Praesent eu rhoncus nibh. Quisque tincidunt, nisi in
-                    venenatis commodo, neque quam pharetra dolor, nec lacinia
-                    urna quam.
+                    Our state-of-the-art storage facilities are designed to keep
+                    your goods safe and accessible. With climate control,
+                    inventory management, and round-the-clock security, we
+                    provide the perfect solution for storing your cargo before
+                    it’s shipped to its destination.
                   </p>
                 </div>
               </div>
@@ -313,8 +167,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="p-12 bg-[url('/parallax.jpg')] bg-cover bg-center bg-fixed">
-        <div className="grid grid-cols-3 p-3 gap-4 mt-12">
+      <div className="md:p-12 py-12 bg-[url('/parallax.jpg')] bg-cover bg-center bg-fixed">
+        <div className="grid md:grid-cols-3 p-3 md:gap-4 gap-8 mt-12">
           <div className="col-span-1 text-white">
             <h1 className="text-center font-bold text-sm">OUR CLIENTS</h1>
             <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -322,7 +176,7 @@ export default function Home() {
               CLIENTS THAT TRUST OUR SERVICES
             </p>
           </div>
-          <div className="col-span-2 grid grid-cols-2 gap-4 text-white">
+          <div className="md:col-span-2 grid md:grid-cols-2 md:gap-4 gap-6 text-white">
             <div className="rounded-lg p-8 bg-white/20 flex gap-2">
               <div className="flex-shrink-0 text-gray-200/30">
                 <FontAwesomeIcon
@@ -334,12 +188,14 @@ export default function Home() {
               </div>
               <div>
                 <p>
-                  I owe my success to having listened respectfully to the very
-                  best advice, and then going away and doing the exact opposite.
+                  RALOC Logistics has been instrumental in ensuring the seamless
+                  transportation of our goods across regions. Their attention to
+                  detail and commitment to timely delivery have made them a
+                  trusted partner in our supply chain operations.
                 </p>
 
-                <p className="text-right font-bold mt-12">JOHN SMITH</p>
-                <p className="text-right">C.T.O of KLM</p>
+                <p className="text-right font-bold mt-12">Michael Anane</p>
+                <p className="text-right">Supply Chain Manager, Nestle Ghana</p>
               </div>
             </div>
             <div className="rounded-lg p-8 bg-white/20 flex gap-2">
@@ -353,12 +209,14 @@ export default function Home() {
               </div>
               <div>
                 <p>
-                  I owe my success to having listened respectfully to the very
-                  best advice, and then going away and doing the exact opposite.
+                  Efficient logistics is critical to our operations, and RALOC
+                  Logistics consistently exceeds expectations. Their advanced
+                  tracking solutions and exceptional service have greatly
+                  contributed to our ability to deliver on time, every time.
                 </p>
 
-                <p className="text-right font-bold mt-12">JOHN SMITH</p>
-                <p className="text-right">C.T.O of KLM</p>
+                <p className="text-right font-bold mt-12">Akosua Dapaah</p>
+                <p className="text-right">CTO, MTN Ghana</p>
               </div>
             </div>
             <div className="rounded-lg p-8 bg-white/20 flex gap-2">
@@ -372,12 +230,15 @@ export default function Home() {
               </div>
               <div>
                 <p>
-                  I owe my success to having listened respectfully to the very
-                  best advice, and then going away and doing the exact opposite.
+                  We rely heavily on RALOC Logistics for the safe and efficient
+                  handling of our goods. Their professionalism and tailored
+                  logistics solutions have significantly optimized our
+                  operations, making them an invaluable partner for our
+                  business.
                 </p>
 
-                <p className="text-right font-bold mt-12">JOHN SMITH</p>
-                <p className="text-right">C.T.O of KLM</p>
+                <p className="text-right font-bold mt-12">Kofi Mensah</p>
+                <p className="text-right">Operations Manager, Kivo Ghana</p>
               </div>
             </div>
             <div className="rounded-lg p-8 bg-white/20 flex gap-2">
@@ -391,12 +252,17 @@ export default function Home() {
               </div>
               <div>
                 <p>
-                  I owe my success to having listened respectfully to the very
-                  best advice, and then going away and doing the exact opposite.
+                  RALOC Logistics is a game-changer. Their reliable cargo
+                  services and excellent customer support have helped us meet
+                  tight deadlines and deliver our products with ease. I highly
+                  recommend their services to businesses seeking dependable
+                  logistics solutions.
                 </p>
 
-                <p className="text-right font-bold mt-12">JOHN SMITH</p>
-                <p className="text-right">C.T.O of KLM</p>
+                <p className="text-right font-bold mt-12">
+                  Deloris Frimpong Manso
+                </p>
+                <p className="text-right">CEO, Delay Foods</p>
               </div>
             </div>
           </div>
@@ -404,10 +270,11 @@ export default function Home() {
       </div>
 
       <div className="p-12">
-        <div className="relative">
-          <h1 className="text-left text-sm font-bold">OUR CORE VALUES</h1>
-          <hr className="w-12 h-2 bg-[#fe9000] my-2 rounded-md border-0" />
-          <p className="text-3xl text-left font-semibold">
+        <div className="relative md:pt-0 pt-12">
+
+          <h1 className="md:text-left text-center text-sm font-bold mt-12 md:mt-0 md:pt-0 pt-16">OUR CORE VALUES</h1>
+          <hr className="w-12 h-2 bg-[#fe9000] my-2 rounded-md border-0 md:mx-0 mx-auto" />
+          <p className="text-3xl md:text-left text-center font-semibold">
             OUR SKILLS AND EXPERTISE
           </p>
 
@@ -422,39 +289,37 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 pt-12 grid grid-cols-4 gap-4 text-center">
+        <div className="mt-12 pt-12 grid md:grid-cols-4 md:gap-4 gap-12 text-center">
           <div>
             <h1 className="text-5xl font-semibold text-[#004efe]">1,230</h1>
             <h3 className="font-bold">DELIVERED PACKAGES</h3>
             <p className="mt-2 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante
-              arcu, lacinia dictum ullamcorper vitae, tempor nec quam
+              Our team has successfully delivered thousands of packages
+              globally, ensuring prompt and reliable service every time.
             </p>
           </div>
           <div>
             <h1 className="text-5xl font-semibold text-[#004efe]">473,283</h1>
             <h3 className="font-bold">KM PER YEAR</h3>
             <p className="mt-2 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante
-              arcu, lacinia dictum ullamcorper vitae, tempor nec quam
+              Covering extensive distances annually, we guarantee seamless
+              transportation for your goods across regions and borders.
             </p>
           </div>
-
           <div>
             <h1 className="text-5xl font-semibold text-[#004efe]">3,279</h1>
             <h3 className="font-bold">TONS OF GOODS</h3>
             <p className="mt-2 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante
-              arcu, lacinia dictum ullamcorper vitae, tempor nec quam
+              With a strong logistics network, we handle substantial volumes of
+              goods, delivering quality and consistency every step of the way.
             </p>
           </div>
-
           <div>
             <h1 className="text-5xl font-semibold text-[#004efe]">513</h1>
             <h3 className="font-bold">SATISFIED CLIENTS</h3>
             <p className="mt-2 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ante
-              arcu, lacinia dictum ullamcorper vitae, tempor nec quam
+              Hundreds of clients trust us for our exceptional service, making
+              us their preferred logistics partner for all transportation needs.
             </p>
           </div>
         </div>
@@ -472,7 +337,7 @@ export default function Home() {
       </div>
 
       <footer className="bg-[#004efe] relative">
-        <div className="absolute -top-8 px-12 left-0 w-full">
+        <div className="absolute -top-8 px-12 md:block hidden left-0 w-full">
           <div className="bg-[#004efe] p-8 relative mx-12">
             <span className="w-40 h-full top-0 -rotate-[25deg] bg-[#004efe] absolute -left-10 -top-4 rounded-lg"></span>
 
