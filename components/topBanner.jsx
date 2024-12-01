@@ -1,6 +1,6 @@
 "use client"
 import { faFacebook, faTiktok, faTwitter, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faMapPin, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMapPin, faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,6 +51,8 @@ export const TopBanner = () => {
         // Cleanup function to clear the interval when the component unmounts
         return () => clearInterval(interval);
     }, [slides.length]);
+
+    const [showMobileNav, setShowMobileNav] = useState(false)
 
     return (
         <>
@@ -106,13 +108,38 @@ export const TopBanner = () => {
                                 <Link href={"/"}>ABOUT US</Link>
                                 <Link href={"/"}>CONTACT US</Link>
                             </nav>
-                            <button type="button" className="bg-white p-1.5 rounded md:hidden block" >
+                            <button type="button" onClick={() => setShowMobileNav(true)} className="bg-white p-1.5 rounded md:hidden block" >
                                 <FontAwesomeIcon icon={faBars} width={30} height={30} color="black" className="text-xl" />
                             </button>
+
+                            {showMobileNav && <div className="fixed transition duration-1000 top-0 left-0 w-full h-svh bg-gray-800/90 z-50 bg-cover bg-center py-12 px-6 flex flex-col justify-between">
+                                <div className="flex flex-col gap-8">
+                                    <div className="flex justify-end">
+                                        <button type="button" onClick={() => setShowMobileNav(false)} className="p-2 rounded-md bg-red-600">
+                                            <FontAwesomeIcon icon={faXmark} width={30} height={30} color="white" />
+                                        </button>
+                                    </div>
+
+                                    <nav className="flex flex-col gap-4">
+                                        <Link href={"/"}>HOME</Link>
+                                        <Link href={"/"}>SERVICES</Link>
+                                        <Link href={"/"}>ABOUT US</Link>
+                                        <Link href={"/"}>CONTACT US</Link>
+                                    </nav>
+                                </div>
+
+
+
+                                <div>
+                                    <p className="text-sm text-gray-50 text-center">
+                                        © 2024 Raloc™. All Rights Reserved.
+                                    </p>
+                                </div>
+                            </div>}
                         </div>
                     </header>
 
-                    <div className="flex-1 mt-10 grid md:grid-cols-2 relative z-50 sm:px-12">
+                    <div className="flex-1 mt-10 grid md:grid-cols-2 relative z-40 sm:px-12">
                         <div className="sm:p-3 p-2 col-span-1 flex items-center">
                             <div>
                                 <h1 className="text-xl font-semibold">{slide.heading}</h1>
