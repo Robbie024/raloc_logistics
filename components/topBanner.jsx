@@ -176,7 +176,7 @@ export const TopBanner = () => {
                                         Alphacode / Tracking No.
                                     </label>
                                     <input
-                                        className="w-full block p-2 mt-5 rounded-lg bg-white"
+                                        className="w-full block p-2 mt-5 rounded-lg bg-white text-gray-700"
                                         type="text"
                                         placeholder="Enter Alphacode / tracking No."
                                     />
