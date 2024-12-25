@@ -26,11 +26,136 @@ export default function Home() {
     <>
       <TopBanner />
 
+      <div id="work" className="sm:px-12 px-3 bg-gray-900 text-gray-100 py-12 text-center">
+        {/* Cars Section */}
+        <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
+        <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
+        <p>Apply for any of our vehicles below</p>
+
+        <div className="grid sm:grid-cols-4 grid-cols-1 gap-6 mt-8">
+          {[
+            {
+              name: "Toyota Corolla",
+              description:
+                "Reliable and fuel-efficient sedan for daily commutes.",
+              image: "/corrola.jpeg",
+              link: "#",
+            },
+            {
+              name: "Honda Civic",
+              description: "Stylish and sporty with advanced safety features.",
+              image: "/civic.jpeg",
+              link: "#",
+            },
+            {
+              name: "Toyota Vitz",
+              description: "Durable saloon car for all tasks and events.",
+              image: "/vitz1.jpeg",
+              link: "#",
+            },
+            {
+              name: "Toyota Yaris",
+              description: "Modern design and nice driving experience.",
+              image: "/yaris.jpeg",
+              link: "#",
+            },
+          ].map((car, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <img
+                src={car.image}
+                alt={car.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+              <h3 className="text-md font-bold text-gray-900 mt-4">{car.name}</h3>
+              <p className="text-sm text-gray-600 mt-2">{car.description}</p>
+              <a
+                href={car.link}
+                className="text-[#fe9000] font-semibold mt-4 block"
+              >
+                Apply Now
+              </a>
+                </div>
+            </div>
+          ))}
+        </div>
+
+        <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
+          View More Cars
+        </button>
+      </div>
+
+      <div id="phone" className="sm:px-12 px-3 py-12 text-center">
+         {/* Phones Section */}
+         <h1 className="text-lg font-bold mt-16">Affordable Phone Loans</h1>
+        <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
+        <p>
+          Get the latest devices with flexible daily or weekly payment plans.
+        </p>
+
+        <div className="grid sm:grid-cols-4 grid-cols-1 gap-6 mt-8">
+          {[
+            {
+              name: "iPhone 13",
+              description: "Powerful performance and advanced camera features.",
+              image: "/13.jpeg",
+              link: "#",
+            },
+            {
+              name: "Samsung Galaxy S21",
+              description: "Flagship Android phone with a sleek design.",
+              image: "/21.jpeg",
+              link: "#",
+            },
+            {
+              name: "Google Pixel 6",
+              description:
+                "Pure Android experience with incredible camera quality.",
+              image: "/pixel.jpeg",
+              link: "#",
+            },
+            {
+              name: "OnePlus 9",
+              description: "Premium performance without the premium price.",
+              image: "/one.jpeg",
+              link: "#",
+            },
+          ].map((phone, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <img
+                src={phone.image}
+                alt={phone.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+              <h3 className="text-md text-gray-900 font-bold mt-4">{phone.name}</h3>
+              <p className="text-sm text-gray-600 mt-2">{phone.description}</p>
+              <a
+                href={phone.link}
+                className="text-[#fe9000] font-semibold mt-4 block"
+              >
+                Apply Now
+              </a>
+                </div>
+            </div>
+          ))}
+        </div>
+
+        <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
+          View More Phones
+        </button>
+      </div>
+
       <div className="relative bg-[url('/dots.png')] bg-cover bg-center bg-fixed">
-        <div className="sm:px-12 py-5 bg-[#004efe] opacity-75 grid md:grid-cols-3">
+        <div id="contact" className="sm:px-12 py-5 bg-[#004efe] opacity-75 grid md:grid-cols-3">
           <div className="flex gap-4 sm:p-3 p-6 text-white">
             <div className="flex-shrink-0">
-              <FontAwesomeIcon className="text-2xl" icon={faHeadset} width={30} height={30} />
+              <FontAwesomeIcon
+                className="text-2xl"
+                icon={faHeadset}
+                width={30}
+                height={30}
+              />
             </div>
             <div>
               <h1 className="font-bold">CALL CENTER</h1>
@@ -40,7 +165,12 @@ export default function Home() {
           </div>
           <div className="flex gap-4 sm:p-3 p-6 text-white">
             <div className="flex-shrink-0">
-              <FontAwesomeIcon className="text-2xl" icon={faBusinessTime} width={30} height={30} />
+              <FontAwesomeIcon
+                className="text-2xl"
+                icon={faBusinessTime}
+                width={30}
+                height={30}
+              />
             </div>
             <div>
               <h1 className="font-bold">WORKING HOURS</h1>
@@ -50,7 +180,12 @@ export default function Home() {
           </div>
           <div className="flex gap-4 sm:p-3 p-6 text-white">
             <div className="flex-shrink-0">
-              <FontAwesomeIcon className="text-2xl" icon={faMapLocationDot} width={30} height={30} />
+              <FontAwesomeIcon
+                className="text-2xl"
+                icon={faMapLocationDot}
+                width={30}
+                height={30}
+              />
             </div>
             <div>
               <h1 className="font-bold">OUR LOCATION</h1>
@@ -60,7 +195,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="sm:px-12 py-8">
+        <div id="services" className="sm:px-12 py-8">
           <div className="p-3 grid md:gap-6 gap-16 md:grid-cols-3">
             <div className="col-span-1 relative">
               <h1 className="text-center text-sm font-bold">OUR SERVICES</h1>
@@ -271,8 +406,9 @@ export default function Home() {
 
       <div className="p-12">
         <div className="relative md:pt-0 pt-12">
-
-          <h1 className="md:text-left text-center text-sm font-bold mt-12 md:mt-0 md:pt-0 pt-16">OUR CORE VALUES</h1>
+          <h1 className="md:text-left text-center text-sm font-bold mt-12 md:mt-0 md:pt-0 pt-16">
+            OUR CORE VALUES
+          </h1>
           <hr className="w-12 h-2 bg-[#fe9000] my-2 rounded-md border-0 md:mx-0 mx-auto" />
           <p className="text-3xl md:text-left text-center font-semibold">
             OUR SKILLS AND EXPERTISE
