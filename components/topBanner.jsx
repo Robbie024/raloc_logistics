@@ -68,12 +68,12 @@ export const TopBanner = () => {
                 <FontAwesomeIcon icon={faXmark} width={30} height={30} color="white" />
             </button>
             <nav className="flex flex-col gap-4">
-                <Link href='/'>HOME</Link>
-                <Link href='/#services'>SERVICES</Link>
-                <Link href='/'>ABOUT US</Link>
-                <Link href='/#contact'>CONTACT US</Link>
-                <Link href='/#work'>WORK & PAY</Link>
-                <Link href='/#phone'>PHONE LOANS</Link>
+                <Link href='/' onClick={() => setShowMobileNav(false)}>HOME</Link>
+                <Link href='/#services' onClick={() => setShowMobileNav(false)}>SERVICES</Link>
+                <Link href='/' onClick={() => setShowMobileNav(false)}>ABOUT US</Link>
+                <Link href='/#contact' onClick={() => setShowMobileNav(false)}>CONTACT US</Link>
+                <Link href='/#work' onClick={() => setShowMobileNav(false)}>WORK & PAY</Link>
+                <Link href='/#phone' onClick={() => setShowMobileNav(false)}>PHONE LOANS</Link>
             </nav>
             <p className="text-sm text-gray-50 text-center mt-8">© 2024 Raloc™. All Rights Reserved.</p>
         </div>

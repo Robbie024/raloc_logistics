@@ -21,14 +21,17 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "RALOC Logistics | Reliable Logistics Solutions",
-  description: "Discover seamless logistics services with RALOC Logistics. From ocean cargo to air freight, courier services, and cargo storage, we deliver excellence in transportation and supply chain management.",
-  keywords: "logistics, transportation, ocean cargo, air freight, courier services, cargo storage, global shipping, supply chain solutions",
+  title: "RALOC Logistics | Reliable Logistics & Financing Solutions",
+  description:
+    "Discover seamless logistics services and financing solutions with RALOC Logistics. From ocean cargo to air freight, courier services, and cargo storage to Work & Pay vehicle ownership and Phone Loans, we deliver excellence in transportation and financial empowerment.",
+  keywords:
+    "logistics, transportation, ocean cargo, air freight, courier services, cargo storage, global shipping, supply chain solutions, Work & Pay, vehicle ownership, Phone Loans, flexible financing, affordable loans, RALOC Logistics",
   author: "RALOC Logistics",
   viewport: "width=device-width, initial-scale=1.0",
   openGraph: {
-    title: "RALOC Logistics | Reliable Logistics Solutions",
-    description: "From ocean cargo to air freight, courier services, and cargo storage, we deliver excellence in transportation and supply chain management.",
+    title: "RALOC Logistics | Reliable Logistics & Financing Solutions",
+    description:
+      "From logistics services like ocean cargo, air freight, and courier services to Work & Pay vehicle ownership and affordable Phone Loans, RALOC Logistics delivers excellence in transportation and financial empowerment.",
     url: "https://raloclogistics.com",
     images: [
       {

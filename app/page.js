@@ -7,6 +7,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faBusinessTime,
+  faCircle,
+  faCircleDot,
+  faDotCircle,
   faHeadset,
   faMapLocationDot,
   faMapPin,
@@ -26,7 +29,10 @@ export default function Home() {
     <>
       <TopBanner />
 
-      <div id="work" className="sm:px-12 px-3 bg-gray-900 text-gray-100 py-12 text-center">
+      <div
+        id="work"
+        className="sm:px-12 px-3 bg-gray-900 text-gray-100 py-12 text-center"
+      >
         {/* Cars Section */}
         <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
         <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -60,22 +66,27 @@ export default function Home() {
               link: "#",
             },
           ].map((car, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
               <img
                 src={car.image}
                 alt={car.name}
                 className="w-full h-40 object-cover"
               />
               <div className="p-4">
-              <h3 className="text-md font-bold text-gray-900 mt-4">{car.name}</h3>
-              <p className="text-sm text-gray-600 mt-2">{car.description}</p>
-              <a
-                href={car.link}
-                className="text-[#fe9000] font-semibold mt-4 block"
-              >
-                Apply Now
-              </a>
-                </div>
+                <h3 className="text-md font-bold text-gray-900 mt-4">
+                  {car.name}
+                </h3>
+                <p className="text-sm text-gray-600 mt-2">{car.description}</p>
+                <a
+                  href={car.link}
+                  className="text-[#fe9000] font-semibold mt-4 block"
+                >
+                  Apply Now
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -86,8 +97,8 @@ export default function Home() {
       </div>
 
       <div id="phone" className="sm:px-12 px-3 py-12 text-center">
-         {/* Phones Section */}
-         <h1 className="text-lg font-bold mt-16">Affordable Phone Loans</h1>
+        {/* Phones Section */}
+        <h1 className="text-lg font-bold mt-16">Affordable Phone Loans</h1>
         <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
         <p>
           Get the latest devices with flexible daily or weekly payment plans.
@@ -121,22 +132,29 @@ export default function Home() {
               link: "#",
             },
           ].map((phone, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md overflow-hidden"
+            >
               <img
                 src={phone.image}
                 alt={phone.name}
                 className="w-full h-40 object-cover"
               />
               <div className="p-4">
-              <h3 className="text-md text-gray-900 font-bold mt-4">{phone.name}</h3>
-              <p className="text-sm text-gray-600 mt-2">{phone.description}</p>
-              <a
-                href={phone.link}
-                className="text-[#fe9000] font-semibold mt-4 block"
-              >
-                Apply Now
-              </a>
-                </div>
+                <h3 className="text-md text-gray-900 font-bold mt-4">
+                  {phone.name}
+                </h3>
+                <p className="text-sm text-gray-600 mt-2">
+                  {phone.description}
+                </p>
+                <a
+                  href={phone.link}
+                  className="text-[#fe9000] font-semibold mt-4 block"
+                >
+                  Apply Now
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -146,8 +164,29 @@ export default function Home() {
         </button>
       </div>
 
+      <div className="relative bg-[url('/investment.jpg')] text-center bg-cover bg-center bg-fixed sm:px-12 px-3 py-12">
+        <div className="absolute top-0 left-0 w-full h-full bg-white/60 backd z-20"></div>
+        <div className="relative z-50">
+          <h1 className="font-bold text-xl">INVEST WITH US NOW</h1>
+          <p>Earn Big Tomorrow</p>
+          <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
+
+          <p className="mt-8">
+            Our investment plan works for individuals over the age of eighteen
+            (18) and organizations. A 7.5% rate of the total amount invested is
+            earned as interest per every month in the duration of six (6)
+            months.
+          </p>
+
+          <button type="button" className="rounded-md bg-black p-4 mt-8 text-sm text-white hover:bg-gray-700 transition duration-500 relative"> JOIN US NOW <FontAwesomeIcon icon={faCircle} width={20} height={20} className="absolute -top-1 -right-1 animate-ping" color="red" /> </button>
+        </div>
+      </div>
+
       <div className="relative bg-[url('/dots.png')] bg-cover bg-center bg-fixed">
-        <div id="contact" className="sm:px-12 py-5 bg-[#004efe] opacity-75 grid md:grid-cols-3">
+        <div
+          id="contact"
+          className="sm:px-12 py-5 bg-[#004efe] opacity-75 grid md:grid-cols-3"
+        >
           <div className="flex gap-4 sm:p-3 p-6 text-white">
             <div className="flex-shrink-0">
               <FontAwesomeIcon
