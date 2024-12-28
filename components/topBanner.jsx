@@ -52,7 +52,6 @@ export const TopBanner = () => {
         <nav className="text-sm md:flex hidden gap-4 font-semibold">
             <Link href='/'>HOME</Link>
             <Link href='/#services'>SERVICES</Link>
-            <Link href='/'>ABOUT US</Link>
             <Link href='/#contact'>CONTACT US</Link>
             <Link href='/#work'>WORK & PAY</Link>
             <Link href='/#phone'>PHONE LOANS</Link>
@@ -70,7 +69,6 @@ export const TopBanner = () => {
             <nav className="flex flex-col gap-4">
                 <Link href='/' onClick={() => setShowMobileNav(false)}>HOME</Link>
                 <Link href='/#services' onClick={() => setShowMobileNav(false)}>SERVICES</Link>
-                <Link href='/' onClick={() => setShowMobileNav(false)}>ABOUT US</Link>
                 <Link href='/#contact' onClick={() => setShowMobileNav(false)}>CONTACT US</Link>
                 <Link href='/#work' onClick={() => setShowMobileNav(false)}>WORK & PAY</Link>
                 <Link href='/#phone' onClick={() => setShowMobileNav(false)}>PHONE LOANS</Link>
