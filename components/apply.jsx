@@ -93,7 +93,7 @@ export const ApplicationForm = ({setApply}) => {
                         <button
                         onClick={()=>setApply(false)}
                             type="button"
-                            className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-black transition duration-300"
+                            className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-800 transition duration-300"
                         >
                             Cancel
                         </button>

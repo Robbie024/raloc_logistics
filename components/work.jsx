@@ -14,9 +14,12 @@ export const Work = () => {
         >
             {/* Cars Section */}
             {apply && <ApplicationForm setApply={setApply} />}
-            <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
-            <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
-            <p>Apply for any of our vehicles below</p>
+
+            <div className="text-gray-100">
+                <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
+                <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
+                <p>Apply for any of our vehicles below</p>
+            </div>
 
             <div className="grid sm:grid-cols-4 text-gray-100 grid-cols-1 gap-6 mt-8">
                 {[
