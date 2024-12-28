@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Poppins } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -47,7 +49,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body className={`${poppins.className} antialiased`}>
+      <ToastContainer
+          position="top-right"
+          newestOnTop={true}
+          pauseOnHover
+          theme="light"
+          autoClose={5000}
+          hideProgressBar={false}
+          stacked
+        />
+        {children}</body>
     </html>
   );
 }

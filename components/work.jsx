@@ -7,13 +7,15 @@ export const Work = () => {
 
     const [apply, setApply] = useState(false)
 
+    const [selectedListing, setSelectedListing] = useState('')
+
     return (
         <div
             id="work"
             className="sm:px-12 px-3 bg-gray-900 py-12 text-center"
         >
             {/* Cars Section */}
-            {apply && <ApplicationForm setApply={setApply} />}
+            {apply && <ApplicationForm setApply={setApply} listing={selectedListing} />}
 
             <div className="text-gray-100">
                 <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
@@ -64,7 +66,7 @@ export const Work = () => {
                             </h3>
                             <p className="text-sm text-gray-600 mt-2">{car.description}</p>
                             <button
-                                onClick={() => setApply(true)}
+                                onClick={() => { setSelectedListing(car.name); setApply(true); }}
                                 type='button'
                                 className="text-[#fe9000] font-semibold mt-4 block"
                             >

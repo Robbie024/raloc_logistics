@@ -6,10 +6,12 @@ export const Phones = () => {
 
     const [apply, setApply] = useState(false)
 
+    const [selectedListing, setSelectedListing] = useState('')
+
     return (
         <div id="phone" className="sm:px-12 px-3 py-12 text-center">
 
-            {apply && <ApplicationForm setApply={setApply} />}
+            {apply && <ApplicationForm setApply={setApply} listing={selectedListing} />}
             {/* Phones Section */}
             <h1 className="text-lg font-bold mt-16">Affordable Phone Loans</h1>
             <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -62,7 +64,7 @@ export const Phones = () => {
                                 {phone.description}
                             </p>
                             <button
-                                onClick={() => setApply(true)}
+                                onClick={() => {setSelectedListing(phone.name); setApply(true);}}
                                 type='button'
                                 className="text-[#fe9000] font-semibold mt-4 block"
                             >

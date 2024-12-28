@@ -1,19 +1,51 @@
 "use client"
-import { useState } from "react";
+import { db } from "@/Firebase/config";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { addDoc, collection } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-export const ApplicationForm = ({setApply}) => {
-    
-    const [formData,setFormData] = useState({
-        fullName : '',
-        email : '',
-        tel : '',
-        address : ''
+export const ApplicationForm = ({ setApply,listing }) => {
+
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        tel: '',
+        address: '',
+        listing
     })
 
-    const handleSubmit = (event) => {
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Handle form submission logic here
-        console.log("Form submitted");
+
+        try {
+            setLoading(true)
+            // Save to Firestore
+            const addApplication = await addDoc(collection(db, `raloc/logistics/applications`), { ...formData });
+
+            if (addApplication?.id) {
+                toast.success("Your application has successfully being received!")
+                setApply(false)
+                setFormData({
+                    fullName: '',
+                    email: '',
+                    tel: '',
+                    address: ''
+                })
+            } else {
+                toast.error("Unkwown Error Happened!")
+            }
+        }
+        catch (e) {
+            toast.error("Internal Server Error!")
+            console.log(e)
+        } finally {
+            setLoading(false)
+        }
+
     };
 
     return (
@@ -21,7 +53,7 @@ export const ApplicationForm = ({setApply}) => {
             <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md">
                 <h1 className="text-xl font-bold text-center">Application Form</h1>
                 <p className="text-center text-gray-600 mt-2 text-sm">
-                Thank you for your interest! Please fill out the form below with your personal info, and we’ll get back to you shortly.
+                    Thank you for your interest! Please fill out the form below with your personal info, and we’ll get back to you shortly.
                 </p>
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                     {/* General Information */}
@@ -36,6 +68,8 @@ export const ApplicationForm = ({setApply}) => {
                             className="w-full p-2 mt-1 border rounded-md"
                             placeholder="Enter your full name"
                             required
+                            value={formData.fullName}
+                            onChange={(e) => setFormData((prevD) => ({ ...prevD, fullName: e.target.value }))}
                         />
                     </div>
 
@@ -50,6 +84,8 @@ export const ApplicationForm = ({setApply}) => {
                             className="w-full p-2 mt-1 border rounded-md"
                             placeholder="Enter your email"
                             required
+                            value={formData.email}
+                            onChange={(e) => setFormData((prevD) => ({ ...prevD, email: e.target.value }))}
                         />
                     </div>
 
@@ -64,6 +100,8 @@ export const ApplicationForm = ({setApply}) => {
                             className="w-full p-2 mt-1 border rounded-md"
                             placeholder="Enter your phone number"
                             required
+                            value={formData.tel}
+                            onChange={(e) => setFormData((prevD) => ({ ...prevD, tel: e.target.value }))}
                         />
                     </div>
 
@@ -78,20 +116,23 @@ export const ApplicationForm = ({setApply}) => {
                             className="w-full p-2 mt-1 border rounded-md"
                             placeholder="Enter your home address"
                             required
+                            value={formData.address}
+                            onChange={(e) => setFormData((prevD) => ({ ...prevD, address: e.target.value }))}
                         />
                     </div>
 
                     {/* Submit Button */}
-                    <div className="text-center flex items-center justify-center gap-4">
+                    <div className="text-center flex items-center justify-center gap-4 mt-2">
                         <button
                             type="submit"
-                            className="bg-[#fe9000] text-white px-6 py-2 rounded-md hover:bg-black transition duration-300"
+                            disabled={loading}
+                            className="bg-[#fe9000] text-white px-6 py-2 rounded-md hover:bg-black transition duration-300 disabled:bg-gray-400 flex items-center justify-center gap-2"
                         >
-                            Submit Application
+                            {loading ? <> <FontAwesomeIcon icon={faSpinner} spin width={20} height={20} /> <span> Submitting... </span> </> : <span>Submit Application</span>}
                         </button>
 
                         <button
-                        onClick={()=>setApply(false)}
+                            onClick={() => setApply(false)}
                             type="button"
                             className="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-800 transition duration-300"
                         >
