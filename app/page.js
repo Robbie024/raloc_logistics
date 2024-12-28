@@ -3,12 +3,16 @@ import { Phones } from "@/components/phones";
 import { TopBanner } from "@/components/topBanner";
 import { Work } from "@/components/work";
 import {
+  faBoxes,
   faBusinessTime,
   faCircle,
   faHeadset,
   faMapLocationDot,
+  faMoneyCheckAlt,
   faPlaneDeparture,
   faQuoteLeft,
+  faRecycle,
+  faSearch,
   faShip,
   faTruck,
   faWarehouse,
@@ -73,95 +77,94 @@ export default function Home() {
             </div>
             <div>
               <h1 className="font-bold">OUR LOCATION</h1>
-              <p className="text-sm mt-1">Ofankor Barrier, Near the police station</p>
+              <p className="text-sm mt-1">
+                Ofankor Barrier, Near the police station
+              </p>
               <p className="text-sm mt-1">Accra, Ghana</p>
             </div>
           </div>
         </div>
 
         <div id="services" className="sm:px-12 py-8">
-          <div className="p-3 grid md:gap-6 gap-16 md:grid-cols-3">
-            <div className="col-span-1 relative">
+          <div className="p-3 md:gap-6 gap-16 relative">
+            <div className="md:absolute -bottom-24 p-2 w-full md:mt-0 mt-8 flex justify-end">
+                <Image
+                  src={"/truck_green.png"}
+                  width={1000}
+                  height={1000}
+                  className="w-[450px] h-auto"
+                  alt="dd"
+                />
+              </div>
+            <div className="mb-8">
               <h1 className="text-center text-sm font-bold">OUR SERVICES</h1>
               <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
               <p className="text-3xl text-center font-semibold">
                 WHAT WE CAN DO FOR YOU
               </p>
-
-              <div className="md:absolute -bottom-24 p-2 w-full md:mt-0 mt-8">
-                <Image
-                  src={"/truck_green.png"}
-                  width={1000}
-                  height={1000}
-                  className="w-100 h-auto"
-                  alt="dd"
-                />
-              </div>
             </div>
-            <div className="md:col-span-2 grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-3">
+              {/* Sourcing & Procurement */}
               <div className="p-10 rounded-md bg-white shadow flex gap-4">
                 <div className="flex-shrink-0">
                   <FontAwesomeIcon
-                    icon={faShip}
+                    icon={faSearch}
                     width={30}
                     height={30}
                     className="text-[#fe9000] text-3xl"
                   />
                 </div>
                 <div className="flex-grow-0">
-                  <h1 className="font-bold">OCEAN CARGO</h1>
+                  <h1 className="font-bold">SOURCING & PROCUREMENT</h1>
                   <p className="mt-1">
-                    Transport your goods across the globe with our dependable
-                    ocean cargo services. Whether it’s full container loads or
-                    less-than-container loads, we ensure timely delivery, secure
-                    handling, and cost-effective shipping solutions. Partner
-                    with us for seamless logistics tailored to your needs.
+                    We simplify the process of sourcing and procuring goods with
+                    our vast network of suppliers. Save time and money with our
+                    tailored procurement solutions.
                   </p>
                 </div>
               </div>
 
+              {/* Inventory Management */}
               <div className="p-10 rounded-md bg-white shadow flex gap-4">
                 <div className="flex-shrink-0">
                   <FontAwesomeIcon
-                    icon={faPlaneDeparture}
+                    icon={faBoxes}
                     width={30}
                     height={30}
                     className="text-[#fe9000] text-3xl"
                   />
                 </div>
                 <div className="flex-grow-0">
-                  <h1 className="font-bold">FLY ANYWHERE</h1>
+                  <h1 className="font-bold">INVENTORY MANAGEMENT</h1>
                   <p className="mt-1">
-                    Experience the speed and efficiency of our air freight
-                    solutions. We offer express delivery for time-sensitive
-                    shipments to destinations worldwide, ensuring your goods
-                    arrive on schedule. With our global network and reliable
-                    partners, your cargo is in safe hands.
+                    Optimize your stock levels with our advanced inventory
+                    management solutions. Track and manage your inventory
+                    seamlessly.
                   </p>
                 </div>
               </div>
 
+              {/* Payment of Suppliers */}
               <div className="p-10 rounded-md bg-white shadow flex gap-4">
                 <div className="flex-shrink-0">
                   <FontAwesomeIcon
-                    icon={faTruck}
+                    icon={faMoneyCheckAlt}
                     width={30}
                     height={30}
                     className="text-[#fe9000] text-3xl"
                   />
                 </div>
                 <div className="flex-grow-0">
-                  <h1 className="font-bold">PROFESSIONAL COURIER SERVICES</h1>
+                  <h1 className="font-bold">PAYMENT OF SUPPLIERS</h1>
                   <p className="mt-1">
-                    From documents to parcels, our professional courier services
-                    guarantee fast and secure delivery. We prioritize customer
-                    satisfaction, offering real-time tracking and door-to-door
-                    service. Trust us to handle your courier needs with
-                    precision and care.
+                    Simplify supplier payments with our secure and efficient
+                    payment solutions. Ensure smooth operations and timely
+                    transactions.
                   </p>
                 </div>
               </div>
 
+              {/* Warehouse Facilities */}
               <div className="p-10 rounded-md bg-white shadow flex gap-4">
                 <div className="flex-shrink-0">
                   <FontAwesomeIcon
@@ -172,13 +175,88 @@ export default function Home() {
                   />
                 </div>
                 <div className="flex-grow-0">
-                  <h1 className="font-bold">CARGO STORAGE</h1>
+                  <h1 className="font-bold">WAREHOUSE FACILITIES</h1>
                   <p className="mt-1">
-                    Our state-of-the-art storage facilities are designed to keep
-                    your goods safe and accessible. With climate control,
-                    inventory management, and round-the-clock security, we
-                    provide the perfect solution for storing your cargo before
-                    it’s shipped to its destination.
+                    Our modern warehouses offer secure storage for your goods,
+                    equipped with climate control and advanced inventory
+                    systems.
+                  </p>
+                </div>
+              </div>
+
+              {/* Freight Forwarding */}
+              <div className="p-10 rounded-md bg-white shadow flex gap-4">
+                <div className="flex-shrink-0">
+                  <FontAwesomeIcon
+                    icon={faPlaneDeparture}
+                    width={30}
+                    height={30}
+                    className="text-[#fe9000] text-3xl"
+                  />
+                </div>
+                <div className="flex-grow-0">
+                  <h1 className="font-bold">FREIGHT FORWARDING</h1>
+                  <p className="mt-1">
+                    Streamline your supply chain with our reliable freight
+                    forwarding services, tailored to meet your unique
+                    transportation needs.
+                  </p>
+                </div>
+              </div>
+
+              {/* Cargo Ship Freight */}
+              <div className="p-10 rounded-md bg-white shadow flex gap-4">
+                <div className="flex-shrink-0">
+                  <FontAwesomeIcon
+                    icon={faShip}
+                    width={30}
+                    height={30}
+                    className="text-[#fe9000] text-3xl"
+                  />
+                </div>
+                <div className="flex-grow-0">
+                  <h1 className="font-bold">CARGO SHIP FREIGHT</h1>
+                  <p className="mt-1">
+                    Depend on our cargo ship services for cost-effective and
+                    reliable transport of goods across international waters.
+                  </p>
+                </div>
+              </div>
+
+              {/* Reverse Logistics */}
+              <div className="p-10 rounded-md bg-white shadow flex gap-4">
+                <div className="flex-shrink-0">
+                  <FontAwesomeIcon
+                    icon={faRecycle}
+                    width={30}
+                    height={30}
+                    className="text-[#fe9000] text-3xl"
+                  />
+                </div>
+                <div className="flex-grow-0">
+                  <h1 className="font-bold">REVERSE LOGISTICS</h1>
+                  <p className="mt-1">
+                    Manage returns, recycling, and reconditioning of products
+                    with our specialized reverse logistics services.
+                  </p>
+                </div>
+              </div>
+
+              {/* Road Freight */}
+              <div className="p-10 rounded-md bg-white shadow flex gap-4">
+                <div className="flex-shrink-0">
+                  <FontAwesomeIcon
+                    icon={faTruck}
+                    width={30}
+                    height={30}
+                    className="text-[#fe9000] text-3xl"
+                  />
+                </div>
+                <div className="flex-grow-0">
+                  <h1 className="font-bold">ROAD FREIGHT</h1>
+                  <p className="mt-1">
+                    Our road freight services ensure timely and secure delivery
+                    of goods across local and regional destinations.
                   </p>
                 </div>
               </div>
@@ -186,6 +264,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className="md:p-12 py-12 bg-[url('/parallax.jpg')] bg-cover bg-center bg-fixed">
         <div className="grid md:grid-cols-3 p-3 md:gap-4 gap-8 mt-12">
           <div className="col-span-1 text-white">
