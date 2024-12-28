@@ -1,172 +1,32 @@
+import { Phones } from "@/components/phones";
 import { TopBanner } from "@/components/topBanner";
-import {
-  faFacebook,
-  faTiktok,
-  faTwitter,
-  faWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
+import { Work } from "@/components/work";
 import {
   faBusinessTime,
   faCircle,
-  faCircleDot,
-  faDotCircle,
   faHeadset,
   faMapLocationDot,
-  faMapPin,
   faPlaneDeparture,
   faQuoteLeft,
-  faSearch,
   faShip,
   faTruck,
   faWarehouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <TopBanner />
 
-      <div
-        id="work"
-        className="sm:px-12 px-3 bg-gray-900 text-gray-100 py-12 text-center"
-      >
-        {/* Cars Section */}
-        <h1 className="text-lg font-bold">Own a Vehicle on Your Terms</h1>
-        <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
-        <p>Apply for any of our vehicles below</p>
+      <Work />
 
-        <div className="grid sm:grid-cols-4 grid-cols-1 gap-6 mt-8">
-          {[
-            {
-              name: "Toyota Corolla",
-              description:
-                "Reliable and fuel-efficient sedan for daily commutes.",
-              image: "/corrola.jpeg",
-              link: "#",
-            },
-            {
-              name: "Honda Civic",
-              description: "Stylish and sporty with advanced safety features.",
-              image: "/civic.jpeg",
-              link: "#",
-            },
-            {
-              name: "Toyota Vitz",
-              description: "Durable saloon car for all tasks and events.",
-              image: "/vitz1.jpeg",
-              link: "#",
-            },
-            {
-              name: "Toyota Yaris",
-              description: "Modern design and nice driving experience.",
-              image: "/yaris.jpeg",
-              link: "#",
-            },
-          ].map((car, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <img
-                src={car.image}
-                alt={car.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-md font-bold text-gray-900 mt-4">
-                  {car.name}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">{car.description}</p>
-                <a
-                  href={car.link}
-                  className="text-[#fe9000] font-semibold mt-4 block"
-                >
-                  Apply Now
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
-          View More Cars
-        </button>
-      </div>
-
-      <div id="phone" className="sm:px-12 px-3 py-12 text-center">
-        {/* Phones Section */}
-        <h1 className="text-lg font-bold mt-16">Affordable Phone Loans</h1>
-        <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
-        <p>
-          Get the latest devices with flexible daily or weekly payment plans.
-        </p>
-
-        <div className="grid sm:grid-cols-4 grid-cols-1 gap-6 mt-8">
-          {[
-            {
-              name: "iPhone 13",
-              description: "Powerful performance and advanced camera features.",
-              image: "/13.jpeg",
-              link: "#",
-            },
-            {
-              name: "Samsung Galaxy S21",
-              description: "Flagship Android phone with a sleek design.",
-              image: "/21.jpeg",
-              link: "#",
-            },
-            {
-              name: "Google Pixel 6",
-              description:
-                "Pure Android experience with incredible camera quality.",
-              image: "/pixel.jpeg",
-              link: "#",
-            },
-            {
-              name: "OnePlus 9",
-              description: "Premium performance without the premium price.",
-              image: "/one.jpeg",
-              link: "#",
-            },
-          ].map((phone, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <img
-                src={phone.image}
-                alt={phone.name}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-md text-gray-900 font-bold mt-4">
-                  {phone.name}
-                </h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  {phone.description}
-                </p>
-                <a
-                  href={phone.link}
-                  className="text-[#fe9000] font-semibold mt-4 block"
-                >
-                  Apply Now
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
-          View More Phones
-        </button>
-      </div>
+      <Phones />
 
       <div className="relative bg-[url('/investment.jpg')] text-center bg-cover bg-center bg-fixed sm:px-12 px-3 py-12">
         <div className="absolute top-0 left-0 w-full h-full bg-white/60 backd z-20"></div>
-        <div className="relative z-50">
+        <div className="relative z-40">
           <h1 className="font-bold text-xl">INVEST WITH US NOW</h1>
           <p>Earn Big Tomorrow</p>
           <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -512,13 +372,13 @@ export default function Home() {
       </div>
 
       <footer className="bg-[#004efe] relative">
-        <div className="absolute -top-8 px-12 md:block hidden left-0 w-full">
+        {/* <div className="absolute -top-8 px-12 md:block hidden left-0 w-full">
           <div className="bg-[#004efe] p-8 relative mx-12">
             <span className="w-40 h-full top-0 -rotate-[25deg] bg-[#004efe] absolute -left-10 -top-4 rounded-lg"></span>
 
             <span className="w-40 h-full top-0 rotate-[25deg] bg-[#004efe] absolute -right-10 -top-4 rounded-lg"></span>
           </div>
-        </div>
+        </div> */}
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
