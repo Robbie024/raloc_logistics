@@ -73,7 +73,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className="font-bold">OUR LOCATION</h1>
-              <p className="text-sm mt-1">Pokuase, ACP - Kwabenya Road</p>
+              <p className="text-sm mt-1">Ofankor Barrier, Near the police station</p>
               <p className="text-sm mt-1">Accra, Ghana</p>
             </div>
           </div>
