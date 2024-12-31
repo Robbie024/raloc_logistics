@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { NewVehicle } from "./newVehicle";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/Firebase/config";
+import { ViewVehicle } from "./viewVehicle";
+import { EditVehicle } from "./editVehicle";
 
 export default function WorkAndPay() {
 
@@ -12,12 +14,16 @@ export default function WorkAndPay() {
 
     const [fetchData, setFetchData] = useState(true)
 
-    const [vehicles,setVehicles] = useState([])
+    const [vehicles, setVehicles] = useState([])
+
+    const [viewVehicle, setViewVehicle] = useState(false)
+
+    const [vehicleInfo,setVehicleInfo] = useState()
 
     useEffect(() => {
 
         const getVehicles = async () => {
-            try { 
+            try {
                 const getVehiclesDataRequest = await getDocs(
                     collection(db, "raloc/logistics/vehicles")
                 );
@@ -28,7 +34,7 @@ export default function WorkAndPay() {
                 }));
 
                 setVehicles(vehiclesData)
-                
+
             }
             catch (e) {
                 console.log(e)
@@ -48,6 +54,7 @@ export default function WorkAndPay() {
     return (
         <div className="sm:py-8 sm:px-5 py-4 px-3">
             {newVehicle && <NewVehicle setNewVehicle={setNewVehicle} setFetchData={setFetchData} />}
+            {viewVehicle && <ViewVehicle setViewVehicle={setViewVehicle} vehicleInfo={vehicleInfo} setFetchData={setFetchData} />}
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-semibold">Work & Pay</h2>
 
@@ -63,9 +70,9 @@ export default function WorkAndPay() {
 
             <div className="grid grid-cols-3 gap-4 mt-8">
 
-               
 
-                {loading ? [1,2,3].map((n,index)=>( <div key={index} className="rounded overflow-hidden shadow animate-pulse">
+
+                {loading ? [1, 2, 3].map((n, index) => (<div key={index} className="rounded overflow-hidden shadow animate-pulse">
                     <div className="w-full h-40 bg-gray-200">
 
                     </div>
@@ -83,34 +90,37 @@ export default function WorkAndPay() {
                     </div>
                 </div>)) : vehicles.length > 0 && vehicles.map((vehicle, index) => (
                     <div key={index} className="rounded overflow-hidden shadow">
-                    <img src={vehicle.image} width={600} height={600} className="w-full h-40 object-cover" alt={'vehicle'} />
-                    <div className="p-3 text-center">
-                        <h2 className="font-bold">{vehicle.name}</h2>
-                        <p className="truncate">
-                            {vehicle.description}
-                        </p>
+                        <img src={vehicle.image} width={600} height={600} className="w-full h-40 object-cover" alt={'vehicle'} />
+                        <div className="p-3 text-center">
+                            <h2 className="font-bold">{vehicle.name}</h2>
+                            <p className="truncate">
+                                {vehicle.description}
+                            </p>
 
-                        <p className="flex gap-1.5 items-center justify-center">
-                            <span className="font-medium">
-                                Applicants:
-                            </span>
+                            <p className="flex gap-1.5 items-center justify-center">
+                                <span className="font-medium">
+                                    Applicants:
+                                </span>
 
-                            <span>
-                                5
-                            </span>
-                        </p>
+                                <span>
+                                    5
+                                </span>
+                            </p>
 
-                        <button type="button" className="p-3 flex mx-auto items-center justify-center gap-1.5 text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white transition duration-500 mt-2 rounded-xl">
-                            <span>
-                                Manage
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                            </svg>
+                            <button onClick={() => {
+                                setVehicleInfo(vehicle)
+                                setViewVehicle(true)
+                            }} type="button" className="p-3 flex mx-auto items-center justify-center gap-1.5 text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white transition duration-500 mt-2 rounded-xl">
+                                <span>
+                                    Manage
+                                </span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                                </svg>
 
-                        </button>
-                    </div>
-                </div>))}
+                            </button>
+                        </div>
+                    </div>))}
 
             </div>
 
