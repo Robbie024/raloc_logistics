@@ -1,7 +1,52 @@
-import { faCar, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+"use client"
+import { db } from "@/Firebase/config";
+import { collection, getCountFromServer } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
+
+    const [loading, setLoading] = useState(true)
+
+    const [vehiclesCounts, setVehiclesCounts] = useState(0)
+    const [phonesCount, setPhonesCount] = useState(0)
+    const [applicationCounts,setApplicationCounts] = useState(0)
+
+    // Reusable function to fetch counts
+    const fetchCount = async (collectionPath) => {
+        try {
+            const collectionRef = collection(db, collectionPath);
+            const snapshot = await getCountFromServer(collectionRef);
+            return snapshot.data().count;
+        } catch (error) {
+            console.log(error)
+            // console.error(`Error fetching count for ${collectionPath}:`, error);
+            toast.error("Internal server error!")
+            return 0; // Fallback count in case of error
+        }
+    };
+
+    useEffect(() => {
+        const getCounts = async () => {
+            try {
+                const vehiclesCounts = await fetchCount("raloc/logistics/vehicles");
+                setVehiclesCounts(vehiclesCounts);
+
+                const phonesCount = await fetchCount("raloc/logistics/phones");
+                setPhonesCount(phonesCount);
+
+                const applicationCount = await fetchCount("raloc/logistics/applications");
+                setApplicationCounts(applicationCount);
+            } catch (e) {
+                console.log(e)
+                toast.error("Internal server error!")
+            } finally {
+                setLoading(false)
+            }
+        };
+
+        getCounts();
+    }, []);
+
     return (
         <div className="px-5 py-5">
             <h1 className="text-gray-900 text-2xl font-bold mb-5">Dashboard</h1>
@@ -16,8 +61,7 @@ export default function Dashboard() {
                         </svg>
 
                     </div>
-                    <p className="text-2xl font-bold text-gray-800">8</p>
-                    {/* {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{applicationCounts}</p>} */}
+                    {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{applicationCounts}</p>}
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex items-center justify-between mb-2">
@@ -28,8 +72,7 @@ export default function Dashboard() {
 
 
                     </div>
-                    <p className="text-2xl font-bold text-gray-800">8</p>
-                    {/* {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{applicationCounts}</p>} */}
+                    {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{vehiclesCounts}</p>}
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="flex items-center justify-between mb-2">
@@ -40,8 +83,7 @@ export default function Dashboard() {
 
 
                     </div>
-                    <p className="text-2xl font-bold text-gray-800">8</p>
-                    {/* {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{applicationCounts}</p>} */}
+                    {loading ? <span className="w-32 h-6 animate-pulse bg-gray-300 block mt-3 rounded-md"></span> : <p className="text-2xl font-bold text-gray-800">{phonesCount}</p>}
                 </div>
             </div>
         </div>
