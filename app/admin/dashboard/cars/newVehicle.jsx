@@ -8,7 +8,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { v4 } from "uuid";
 
-export const NewVehicle = ({ setNewVehicle }) => {
+export const NewVehicle = ({ setNewVehicle,setFetchData }) => {
 
     const [formData, setFormData] = useState({
         name: '',
@@ -43,6 +43,7 @@ export const NewVehicle = ({ setNewVehicle }) => {
 
             if (addVehicle?.id) {
                 toast.success('New Vehicle Uploaded successfully!')
+                setFetchData(true)
                 setNewVehicle(false)
             } else {
                 toast.error('Unexpected error while adding offer, please try again later!')
