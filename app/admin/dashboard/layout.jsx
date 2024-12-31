@@ -1,13 +1,13 @@
 import { AdminHeader } from "@/components/adminHeader";
 import { AdminSidebar } from "@/components/adminSidebar";
-// import { Auth } from "@/components/auth";
+import { Auth } from "@/components/auth";
 import { SidebarProvider } from "@/providers/sidebarProvider";
 
 export default function RootLayout({ children }) {
 
     return (
         <SidebarProvider>
-            {/* <Auth> */}
+            <Auth>
             <div className="flex h-svh gap-1.5 w-full relative overflow-hidden">
 
                 <AdminSidebar />
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
                 </div>
 
             </div>
-            {/* </Auth> */}
+            </Auth>
         </SidebarProvider>
     )
 }
