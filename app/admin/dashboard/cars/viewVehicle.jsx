@@ -3,14 +3,18 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 import { EditVehicle } from "./editVehicle"
+import { DelVehicle } from "./delVehicle"
 
 export const ViewVehicle = ({ vehicleInfo, setViewVehicle, setFetchData }) => {
 
-    const [editVehicle,setEditVehicle] = useState(false)
+    const [editVehicle, setEditVehicle] = useState(false)
+
+    const [delVehicle, setDelVehicle] = useState(false)
 
     return (
         <div className="fixed top-0 left-0 w-full h-svh bg-black/30 backdrop-blur-sm flex items-center justify-center transition duration-500">
             {editVehicle && <EditVehicle setEditVehicle={setEditVehicle} vehicleInfo={vehicleInfo} setFetchData={setFetchData} setViewVehicle={setViewVehicle} />}
+            {delVehicle && <DelVehicle vehicleId={vehicleInfo.id} setDelVehicle={setDelVehicle} setFetchData={setFetchData} setViewVehicle={setViewVehicle} />}
             <div className="p-6 bg-white rounded-lg shadow max-w-2xl w-full">
 
                 <div className="flex justify-between items-center mb-4">
@@ -53,11 +57,11 @@ export const ViewVehicle = ({ vehicleInfo, setViewVehicle, setFetchData }) => {
                     </div>
 
                     <div className="flex justify-between">
-                        <button onClick={()=>setEditVehicle(true)} type="button" className="rounded-lg p-2 border border-indigo-600 hover:bg-indigo-600 transition duration-500 hover:text-white text-sm">
+                        <button onClick={() => setEditVehicle(true)} type="button" className="rounded-lg p-2 border border-indigo-600 hover:bg-indigo-600 transition duration-500 hover:text-white text-sm">
                             Edit
                         </button>
 
-                        <button type="button" className="rounded-lg p-2 border border-red-600 hover:bg-red-600 transition duration-500 hover:text-white text-sm">
+                        <button onClick={() => setDelVehicle(true)} type="button" className="rounded-lg p-2 border border-red-600 hover:bg-red-600 transition duration-500 hover:text-white text-sm">
                             Delete
                         </button>
                     </div>
