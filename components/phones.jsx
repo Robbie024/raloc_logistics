@@ -1,12 +1,46 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ApplicationForm } from "./apply"
+import { collection, getDocs } from "firebase/firestore"
+import { toast } from "react-toastify"
+import { db } from "@/Firebase/config"
 
 export const Phones = () => {
 
     const [apply, setApply] = useState(false)
 
     const [selectedListing, setSelectedListing] = useState('')
+
+    const [loading, setLoading] = useState(true)
+    const [phones, setPhones] = useState([])
+
+    useEffect(() => {
+
+        const getPhones = async () => {
+            try {
+                const getPhonesDataRequest = await getDocs(
+                    collection(db, "raloc/logistics/phones")
+                );
+
+                const phonesData = getPhonesDataRequest.docs.map((doc) => ({
+                    iphonesd: doc.id,
+                    ...doc.data(),
+                }));
+
+                setPhones(phonesData)
+
+            }
+            catch (e) {
+                console.log(e)
+                toast.error("Internal Server Error!")
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        getPhones()
+
+    }, [])
 
     return (
         <div id="phone" className="sm:px-12 px-3 py-12 text-center">
@@ -20,59 +54,58 @@ export const Phones = () => {
             </p>
 
             <div className="grid sm:grid-cols-4 grid-cols-1 gap-6 mt-8">
-                {[
-                    {
-                        name: "iPhone 13",
-                        description: "Powerful performance and advanced camera features.",
-                        image: "/13.jpeg",
-                        link: "#",
-                    },
-                    {
-                        name: "Samsung Galaxy S21",
-                        description: "Flagship Android phone with a sleek design.",
-                        image: "/21.jpeg",
-                        link: "#",
-                    },
-                    {
-                        name: "Google Pixel 6",
-                        description:
-                            "Pure Android experience with incredible camera quality.",
-                        image: "/pixel.jpeg",
-                        link: "#",
-                    },
-                    {
-                        name: "OnePlus 9",
-                        description: "Premium performance without the premium price.",
-                        image: "/one.jpeg",
-                        link: "#",
-                    },
-                ].map((phone, index) => (
+                {loading ? [
+                    1, 2, 3, 4
+                ].map((num, index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-lg shadow-md overflow-hidden"
+                        className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse"
                     >
-                        <img
-                            src={phone.image}
-                            alt={phone.name}
-                            className="w-full h-40 object-cover"
-                        />
+                        <div className="w-full h-40 bg-gray-200">
+
+                        </div>
                         <div className="p-4">
-                            <h3 className="text-md text-gray-900 font-bold mt-4">
-                                {phone.name}
+                            <h3 className="text-md text-gray-900 font-bold mt-2 bg-gray-200 h-4 rounded-md">
                             </h3>
-                            <p className="text-sm text-gray-600 mt-2">
-                                {phone.description}
+                            <p className="text-sm text-gray-600 mt-2 h-4 bg-gray-200 rounded-md">
                             </p>
                             <button
-                                onClick={() => {setSelectedListing(phone.name); setApply(true);}}
                                 type='button'
-                                className="text-[#fe9000] font-semibold mt-4 block"
+                                className="text-[#fe9000] font-semibold mt-4 block h-6 bg-gray-200 rounded-md w-20"
                             >
-                                Apply Now
                             </button>
                         </div>
                     </div>
-                ))}
+                )) : phones.length > 0 ? phones.map((phone, index) => (<div
+                    key={index}
+                    className="bg-white rounded-lg shadow-md overflow-hidden"
+                >
+                    <img
+                        src={phone.image}
+                        alt={phone.name}
+                        className="w-full h-40 object-cover"
+                    />
+                    <div className="p-4">
+                        <h3 className="text-md text-gray-900 font-bold mt-4">
+                            {phone.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 mt-2 truncate">
+                            {phone.description}
+                        </p>
+                        <button
+                            onClick={() => { setSelectedListing(phone.name); setApply(true); }}
+                            type='button'
+                            className="text-[#fe9000] font-semibold mt-4 block"
+                        >
+                            Apply Now
+                        </button>
+                    </div>
+                </div>)) : <div className="flex sm:col-span-4 justify-center items-center flex-col gap-4 bg-gray-100 p-6 rounded">
+                    <p className="text-sm">No Phones Found.</p>
+                    <p className="font-bold">
+                        Please try again later!
+                    </p>
+                </div>}
             </div>
 
             <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
