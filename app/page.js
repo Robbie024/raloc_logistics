@@ -2,6 +2,7 @@ import { Invest } from "@/components/invest";
 import { Phones } from "@/components/phones";
 import { TopBanner } from "@/components/topBanner";
 import { Work } from "@/components/work";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import {
   faBoxes,
   faBusinessTime,
@@ -19,6 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -88,14 +90,14 @@ export default function Home() {
         <div id="services" className="sm:px-12 py-8">
           <div className="p-3 md:gap-6 gap-16 relative">
             <div className="md:absolute -bottom-24 p-2 w-full md:mt-0 mt-8 flex justify-end">
-                <Image
-                  src={"/truck_green.png"}
-                  width={1000}
-                  height={1000}
-                  className="w-[450px] h-auto"
-                  alt="dd"
-                />
-              </div>
+              <Image
+                src={"/truck_green.png"}
+                width={1000}
+                height={1000}
+                className="w-[450px] h-auto"
+                alt="dd"
+              />
+            </div>
             <div className="mb-8">
               <h1 className="text-center text-sm font-bold">OUR SERVICES</h1>
               <hr className="w-12 h-2 bg-[#fe9000] my-2 mx-auto rounded-md border-0" />
@@ -425,17 +427,17 @@ export default function Home() {
       </div>
       <div>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13088.88686946622!2d-0.31237776867005923!3d5.700294160246733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa0264d81f6f1%3A0x287a31d834ac2efe!2sPokoasi!5e1!3m2!1sen!2sgh!4v1732887483038!5m2!1sen!2sgh"
-          height={400}
-          className="w-full"
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3272.461585701859!2d-0.26777552501408375!3d5.658061494323333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNcKwMzknMjkuMCJOIDDCsDE1JzU0LjciVw!5e1!3m2!1sen!2sgh!4v1734445577007!5m2!1sen!2sgh"
+          width="100%"
+          height="480"
           style={{ border: 0 }}
-          allowFullScreen=""
+          allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
 
-      <footer className="bg-[#004efe] relative">
+      <footer className="bg-[#004efe] relative text-sm">
         {/* <div className="absolute -top-8 px-12 md:block hidden left-0 w-full">
           <div className="bg-[#004efe] p-8 relative mx-12">
             <span className="w-40 h-full top-0 -rotate-[25deg] bg-[#004efe] absolute -left-10 -top-4 rounded-lg"></span>
@@ -461,17 +463,29 @@ export default function Home() {
                 </h2>
                 <ul className="text-gray-50 font-medium">
                   <li className="mb-4">
-                    <a href="https://flowbite.com/" className="hover:underline">
+                    <Link href="/" className="hover:underline">
                       Home
-                    </a>
+                    </Link>
                   </li>
-                  <li>
-                    <a
-                      href="https://tailwindcss.com/"
-                      className="hover:underline"
-                    >
+                  <li className="mb-4">
+                    <Link href="/#services" className="hover:underline">
+                      Services
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link href="/#contact" className="hover:underline">
                       Contact Us
-                    </a>
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link href="/#work" className="hover:underline">
+                      Work & Pay
+                    </Link>
+                  </li>
+                  <li className="mb-4">
+                    <Link href="/#phone" className="hover:underline">
+                      Phone Loans
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -482,7 +496,8 @@ export default function Home() {
                 <ul className="text-gray-50 font-medium">
                   <li className="mb-4">
                     <a
-                      href="https://github.com/themesberg/flowbite"
+                      target="_blank"
+                      href="https://www.facebook.com/raloctravels"
                       className="hover:underline "
                     >
                       Facebook
@@ -490,10 +505,10 @@ export default function Home() {
                   </li>
                   <li>
                     <a
-                      href="https://discord.gg/4eeurUVvTy"
+                      href="https://www.instagram.com/raloctravels?igsh=amhlMjNjeDBxNmdi&utm_source=qr"
                       className="hover:underline"
                     >
-                      Twitter
+                      Instagram
                     </a>
                   </li>
                 </ul>
@@ -527,7 +542,10 @@ export default function Home() {
               . All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
-              <a href="#" className="text-gray-50 hover:text-gray-900">
+              <a
+                href="https://www.facebook.com/raloctravels"
+                className="text-gray-500 hover:text-white"
+              >
                 <svg
                   className="w-4 h-4"
                   aria-hidden="true"
@@ -543,51 +561,14 @@ export default function Home() {
                 </svg>
                 <span className="sr-only">Facebook page</span>
               </a>
-              <a href="#" className="text-gray-50 hover:text-gray-900 ms-5">
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 21 16"
-                >
-                  <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
-                </svg>
-                <span className="sr-only">Discord community</span>
+              <a
+                href="https://www.instagram.com/raloctravels?igsh=amhlMjNjeDBxNmdi&utm_source=qr"
+                className="text-gray-500 hover:text-white ms-5"
+              >
+                <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 p-0" />
+                <span className="sr-only">Instagram page</span>
               </a>
-              <a href="#" className="text-gray-50 hover:text-gray-900 ms-5">
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 17"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="sr-only">Twitter page</span>
-              </a>
-              <a href="#" className="text-gray-50 hover:text-gray-900 ms-5">
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="sr-only">GitHub account</span>
-              </a>
-              <a href="#" className="text-gray-50 hover:text-gray-900 ms-5">
+              <a href="#" className="text-gray-500 hover:text-white ms-5">
                 <svg
                   className="w-4 h-4"
                   aria-hidden="true"
