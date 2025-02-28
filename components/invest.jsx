@@ -19,7 +19,7 @@ export const Invest = () => {
 
                 <p className="mt-8">
                     Our investment plan works for individuals over the age of eighteen
-                    (18) and organizations. A 7.5% rate of the total amount invested is
+                    (18) and organizations. A 20% rate of the total amount invested is
                     earned as interest per every month in the duration of six (6)
                     months.
                 </p>
