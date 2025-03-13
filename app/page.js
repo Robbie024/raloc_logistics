@@ -50,7 +50,7 @@ export default function Home() {
             <div>
               <h1 className="font-bold">CALL CENTER</h1>
               <p className="text-sm mt-1">Give us a free call</p>
-              <p className="text-sm mt-1">+233 59 456 8876</p>
+              <p className="text-sm mt-1">+233 50 3905535</p>
             </div>
           </div>
           <div className="flex gap-4 sm:p-3 p-6 text-white">
