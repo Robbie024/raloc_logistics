@@ -108,7 +108,9 @@ export const Phones = () => {
                 </div>}
             </div>
 
-            <button className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
+            <button 
+                onClick={() => window.location.href = "/phones"}
+                className="mt-6 bg-[#fe9000] text-white px-6 py-2 rounded-md">
                 View More Phones
             </button>
         </div>
